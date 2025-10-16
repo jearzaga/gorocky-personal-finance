@@ -1,6 +1,7 @@
 'use client'
 
 import { useTransition } from 'react'
+import { LogOut } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { logout } from '@/app/actions/auth'
@@ -18,7 +19,13 @@ export function LogoutButton() {
   }
 
   return (
-    <Button variant="outline" onClick={handleLogout} disabled={isPending}>
+    <Button 
+      variant="ghost" 
+      className="w-full justify-start" 
+      onClick={handleLogout} 
+      disabled={isPending}
+    >
+      <LogOut className="mr-2 h-4 w-4" />
       {isPending ? 'Logging out...' : 'Logout'}
     </Button>
   )
