@@ -9,29 +9,6 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
-      profiles: {
-        Row: {
-          id: string
-          display_name: string | null
-          currency: string
-          created_at: string
-          updated_at: string
-        }
-        Insert: {
-          id: string
-          display_name?: string | null
-          currency?: string
-          created_at?: string
-          updated_at?: string
-        }
-        Update: {
-          id?: string
-          display_name?: string | null
-          currency?: string
-          created_at?: string
-          updated_at?: string
-        }
-      }
       budgets: {
         Row: {
           id: string
@@ -57,6 +34,52 @@ export interface Database {
           name?: string
           amount?: number
           period?: 'monthly' | 'weekly' | 'yearly'
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      categories: {
+        Row: {
+          id: string
+          name: string
+          icon: string | null
+          color: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          icon?: string | null
+          color?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          icon?: string | null
+          color?: string | null
+          created_at?: string
+        }
+      }
+      profiles: {
+        Row: {
+          id: string
+          display_name: string | null
+          currency: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id: string
+          display_name?: string | null
+          currency?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          display_name?: string | null
+          currency?: string
           created_at?: string
           updated_at?: string
         }
@@ -94,29 +117,6 @@ export interface Database {
           type?: 'income' | 'expense'
           created_at?: string
           updated_at?: string
-        }
-      }
-      categories: {
-        Row: {
-          id: string
-          name: string
-          icon: string | null
-          color: string | null
-          created_at: string
-        }
-        Insert: {
-          id?: string
-          name: string
-          icon?: string | null
-          color?: string | null
-          created_at?: string
-        }
-        Update: {
-          id?: string
-          name?: string
-          icon?: string | null
-          color?: string | null
-          created_at?: string
         }
       }
       user_categories: {
