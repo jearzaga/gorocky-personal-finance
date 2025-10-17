@@ -119,12 +119,12 @@ export function TransactionForm({
 
       <div className="space-y-2">
         <Label htmlFor="category_id">Category (Optional)</Label>
-        <Select name="category_id" defaultValue={transaction?.category_id || undefined}>
+        <Select name="category_id" defaultValue={transaction?.category_id || 'none'}>
           <SelectTrigger>
             <SelectValue placeholder="Select category" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">None</SelectItem>
+            <SelectItem value="none">None</SelectItem>
             {categories.map((category) => (
               <SelectItem key={category.id} value={category.id}>
                 {category.icon} {category.name}

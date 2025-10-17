@@ -32,7 +32,7 @@ export async function createTransaction(prevState: FormState | null, formData: F
 
   const validatedFields = createTransactionSchema.safeParse({
     budget_id: formData.get('budget_id'),
-    category_id: formData.get('category_id') || null,
+    category_id: formData.get('category_id') === 'none' ? null : formData.get('category_id'),
     amount: formData.get('amount'),
     description: formData.get('description') || null,
     transaction_date: formData.get('transaction_date'),
@@ -96,7 +96,7 @@ export async function updateTransaction(
 
   const validatedFields = updateTransactionSchema.safeParse({
     budget_id: formData.get('budget_id'),
-    category_id: formData.get('category_id') || null,
+    category_id: formData.get('category_id') === 'none' ? null : formData.get('category_id'),
     amount: formData.get('amount'),
     description: formData.get('description') || null,
     transaction_date: formData.get('transaction_date'),
@@ -111,7 +111,7 @@ export async function updateTransaction(
   }
 
   const updates: Database['public']['Tables']['transactions']['Update'] = Object.fromEntries(
-    Object.entries(validatedFields.data).filter(([_, v]) => v !== undefined)
+    Object.entries(validatedFields.data).filter(([, v]) => v !== undefined)
   )
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
