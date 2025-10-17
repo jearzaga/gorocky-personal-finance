@@ -49,9 +49,10 @@ export default async function TodayPage() {
 
   return (
     <div className="space-y-6">
+      {/* Header - Responsive */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Today&apos;s Activity</h1>
-        <p className="text-muted-foreground">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Today&apos;s Activity</h1>
+        <p className="text-sm sm:text-base text-muted-foreground">
           Track all your transactions for {new Date().toLocaleDateString('en-US', { 
             weekday: 'long', 
             year: 'numeric', 
@@ -61,8 +62,8 @@ export default async function TodayPage() {
         </p>
       </div>
 
-      {/* Daily Summary Cards */}
-      <div className="grid gap-4 md:grid-cols-4">
+      {/* Daily Summary Cards - Responsive */}
+      <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
         <Card>
           <CardHeader className="pb-2">
             <CardDescription className="flex items-center gap-2">

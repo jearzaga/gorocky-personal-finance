@@ -34,45 +34,51 @@ export function TransactionList({ transactions, categories, budgetId }: Transact
     <div className="space-y-4">
       {transactions.map((transaction) => (
         <Card key={transaction.id}>
-          <CardContent className="flex items-center gap-4 pt-6">
-            <div className="flex-1">
-              <div className="flex items-center gap-2 mb-1">
-                <h3 className="font-semibold">
-                  {transaction.description || 'Untitled Transaction'}
-                </h3>
-                <Badge variant={transaction.type === 'income' ? 'default' : 'secondary'}>
-                  {transaction.type}
-                </Badge>
-                {transaction.categories && (
-                  <Badge variant="outline">
-                    {transaction.categories.icon} {transaction.categories.name}
+          <CardContent className="pt-6">
+            {/* Mobile and Desktop Layout */}
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+              {/* Left section - Transaction details */}
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-2 mb-1">
+                  <h3 className="font-semibold truncate">
+                    {transaction.description || 'Untitled Transaction'}
+                  </h3>
+                  <Badge variant={transaction.type === 'income' ? 'default' : 'secondary'}>
+                    {transaction.type}
                   </Badge>
-                )}
+                  {transaction.categories && (
+                    <Badge variant="outline" className="truncate">
+                      {transaction.categories.icon} {transaction.categories.name}
+                    </Badge>
+                  )}
+                </div>
+                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <span className="flex items-center gap-1">
+                    <Calendar className="h-3 w-3" />
+                    {new Date(transaction.transaction_date).toLocaleDateString()}
+                  </span>
+                </div>
               </div>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <span className="flex items-center gap-1">
-                  <Calendar className="h-3 w-3" />
-                  {new Date(transaction.transaction_date).toLocaleDateString()}
-                </span>
+
+              {/* Right section - Amount and actions */}
+              <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4">
+                <div className={`text-2xl font-bold whitespace-nowrap ${
+                  transaction.type === 'income' ? 'text-green-600' : 'text-red-600'
+                }`}>
+                  {transaction.type === 'income' ? '+' : '-'}${Math.abs(transaction.amount).toFixed(2)}
+                </div>
+                <div className="flex gap-2 shrink-0">
+                  <EditTransactionDialog 
+                    transaction={transaction} 
+                    categories={categories}
+                    budgetId={budgetId}
+                  />
+                  <DeleteTransactionButton 
+                    transactionId={transaction.id}
+                    budgetId={budgetId}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="text-right">
-              <div className={`text-2xl font-bold ${
-                transaction.type === 'income' ? 'text-green-600' : 'text-red-600'
-              }`}>
-                {transaction.type === 'income' ? '+' : '-'}${Math.abs(transaction.amount).toFixed(2)}
-              </div>
-            </div>
-            <div className="flex gap-2">
-              <EditTransactionDialog 
-                transaction={transaction} 
-                categories={categories}
-                budgetId={budgetId}
-              />
-              <DeleteTransactionButton 
-                transactionId={transaction.id}
-                budgetId={budgetId}
-              />
             </div>
           </CardContent>
         </Card>

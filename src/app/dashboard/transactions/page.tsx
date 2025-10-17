@@ -70,15 +70,16 @@ export default async function TransactionsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">All Transactions</h1>
-          <p className="text-muted-foreground">
+      {/* Header - Responsive */}
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div className="flex-1 min-w-0">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">All Transactions</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">
             View and manage all your transactions across budgets
           </p>
         </div>
         {budgets && budgets.length > 0 && (
-          <Button asChild>
+          <Button asChild className="w-full sm:w-auto">
             <Link href={`/dashboard/budgets/${budgets[0].id}`}>
               <Plus className="h-4 w-4 mr-2" />
               Add Transaction
@@ -87,8 +88,8 @@ export default async function TransactionsPage() {
         )}
       </div>
 
-      {/* Summary Cards */}
-      <div className="grid gap-4 md:grid-cols-4">
+      {/* Summary Cards - Responsive */}
+      <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
         <Card>
           <CardHeader className="pb-2">
             <CardDescription className="flex items-center gap-2">

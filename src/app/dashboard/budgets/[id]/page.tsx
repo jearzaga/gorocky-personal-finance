@@ -66,26 +66,29 @@ export default async function BudgetDetailPage({ params }: PageProps) {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-4">
-        <Button variant="ghost" size="icon" asChild>
-          <Link href="/dashboard/budgets">
-            <ChevronLeft className="h-4 w-4" />
-          </Link>
-        </Button>
-        <div className="flex-1">
-          <h1 className="text-3xl font-bold tracking-tight">{budget.name}</h1>
-          <p className="text-muted-foreground capitalize">
-            {budget.period} budget
-          </p>
+      {/* Header - Responsive */}
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+        <div className="flex items-center gap-4 flex-1 min-w-0">
+          <Button variant="ghost" size="icon" asChild>
+            <Link href="/dashboard/budgets">
+              <ChevronLeft className="h-4 w-4" />
+            </Link>
+          </Button>
+          <div className="flex-1 min-w-0">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight truncate">{budget.name}</h1>
+            <p className="text-sm sm:text-base text-muted-foreground capitalize">
+              {budget.period} budget
+            </p>
+          </div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 justify-end sm:justify-start">
           <EditBudgetDialog budget={budget} />
           <DeleteBudgetButton budgetId={budget.id} />
         </div>
       </div>
 
       {/* Budget Summary Cards */}
-      <div className="grid gap-4 md:grid-cols-4">
+      <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
         <Card>
           <CardHeader className="pb-2">
             <CardDescription>Budget Amount</CardDescription>
@@ -156,10 +159,10 @@ export default async function BudgetDetailPage({ params }: PageProps) {
         </CardContent>
       </Card>
 
-      {/* Transactions Section */}
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold">Transactions</h2>
-        <Button asChild>
+      {/* Transactions Section - Responsive */}
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h2 className="text-xl sm:text-2xl font-bold">Transactions</h2>
+        <Button asChild className="w-full sm:w-auto">
           <Link href={`/dashboard/budgets/${budget.id}/transactions/new`}>
             <Plus className="mr-2 h-4 w-4" />
             Add Transaction
