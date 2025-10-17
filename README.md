@@ -206,6 +206,58 @@ Expected: 0 errors, 0 warnings, all 13 routes compiled successfully
 
 ---
 
+## Testing
+
+This project includes comprehensive unit tests for validation logic.
+
+### Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage report
+npm run test:coverage
+```
+
+### Test Coverage
+
+Current test suite includes:
+- **Budget Validation Tests** (`src/__tests__/budget-validation.test.ts`)
+  - ✅ Validates correct budget data
+  - ✅ Rejects empty names
+  - ✅ Rejects names over 100 characters
+  - ✅ Rejects zero/negative amounts
+  - ✅ Validates period enums (monthly/weekly/yearly)
+  - ✅ Tests partial updates
+  - ✅ Tests type coercion
+
+
+## CI/CD Pipeline
+
+This project uses GitHub Actions for continuous integration.
+
+### Workflow (`.github/workflows/ci.yml`)
+
+On every push and pull request, the pipeline automatically:
+1. ✅ **Lints** the codebase (`npm run lint`)
+2. ✅ **Type checks** TypeScript (`npm run type-check`)
+3. ✅ **Runs tests** (`npm test`)
+
+
+### Local CI Verification
+
+Before pushing code, verify all checks pass locally:
+
+```bash
+# Run all CI checks locally
+npm run lint && npm run type-check && npm test
+```
+
+
 ## 🔒 Access Control (RLS Implementation)
 
 All tables use **Row Level Security (RLS)** policies to ensure users can only access their own data:
