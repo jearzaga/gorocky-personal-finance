@@ -6,6 +6,7 @@
 **Assignment:** GoRocky Software Engineer Technical Assessment
 
 ---
+- ✅ Debugged and refined through iterative feedback
 
 ## � Project Overview
 
@@ -18,16 +19,6 @@
 - **Analytics:** Dashboard with spending insights, progress bars, and daily summaries
 - **Responsive Design:** Mobile-first interface using Tailwind CSS
 
-### Screenshots
-
-_[Screenshots will be added after deployment]_
-
-- Dashboard with budget overview
-- Budget detail page with transactions
-- Category management interface
-- Transaction form with category selection
-
----
 
 ## 🗄️ Data Model (ERD)
 
@@ -192,6 +183,10 @@ npm install
 npm run dev
 ```
 
+### Test Account
+email: johnerickarzaga11@gmail.com
+password: Password1
+
 Open [http://localhost:3000](http://localhost:3000)
 
 ### Verification
@@ -321,6 +316,7 @@ This project was developed with AI assistance to demonstrate modern development 
 - ✅ Reviewed and understood by the developer
 - ✅ Tested manually and via build process
 - ✅ Customized to fit project requirements
+- ✅ Debugged and refined through iterative feedback
 - ✅ Debugged and refined through iterative feedback
 
 AI tools were used as **productivity multipliers**, not replacements for understanding. The developer maintains full ownership of architectural decisions, debugging strategies, and implementation choices.
